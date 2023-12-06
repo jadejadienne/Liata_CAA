@@ -1,0 +1,30 @@
+def decompor_vetor(S, piv, p, r):
+    q1 = p - 1 
+    q2 = r + 1  
+    i = p
+
+    while i < q2:
+        if S[i] < piv:
+            q1 += 1
+            S[i], S[q1] = S[q1], S[i]
+            i += 1
+        elif S[i] == piv:
+            i += 1
+        else:
+            q2 -= 1
+            S[i], S[q2] = S[q2], S[i]
+
+    return q1, q2
+
+
+# Exemplo de uso:
+vetor_S = [7, 2, 5, 8, 1, 6, 3, 4]
+pivote = 5
+p_indice = 1
+r_indice = len(vetor_S) - 1
+
+q1_result, q2_result = decompor_vetor(vetor_S, pivote, p_indice, r_indice)
+
+print("Vetor após a decomposição:", vetor_S)
+print("q1:", q1_result)
+print("q2:", q2_result)
